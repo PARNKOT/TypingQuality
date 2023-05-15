@@ -77,6 +77,7 @@ int main(int argc, char** argv) {
         fclose(file);
     } else {
         perror("Couldn't open file");
+        printf("%s", getOption("-f"));
     }
 
     return 0;
@@ -125,8 +126,8 @@ Metrics readUserStringAndCalcMetrics(char* str_to_repeat, const size_t length) {
 
     gettimeofday(&metrics.time_start, NULL);
 
-    scanf("%[^\n]%*c", user_line);
-
+    //scanf("%[^\n]%*c", user_line);
+    fgets(user_line, length, stdin);
     gettimeofday(&metrics.time_end, NULL);
 
 

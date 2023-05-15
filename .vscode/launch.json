@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/main",
-            "args": [],//["-f", "text.txt"],
+            "args": ["-f", "../text.txt"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
