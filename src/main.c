@@ -166,7 +166,7 @@ int compareStrings(char* base, char* s) {
         word1 = __strtok_r(NULL, " ", &last1);
     }
 
-    return matches*100/(sum_length-1);
+    return matches*100/(sum_length);
 }
 
 #elif _WIN32 || _WIN64
@@ -206,7 +206,9 @@ int compareStrings(char* base, char* s) {
 int compareWords(char *word1, char *word2) {
     int count_matches = 0;
     
-    while(*word1 != '\0' && *word2 != '\0') {
+    while(*word1 != '\0' && *word1 != '\n' && \
+          *word2 != '\0' && *word2 != '\n')
+    {
         *word1 == *word2 ? ++count_matches : 0;
         ++word1;
         ++word2;
