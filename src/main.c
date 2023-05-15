@@ -82,8 +82,7 @@ void mainLoop() {
     int sentences_count = 0;
 
 
-    size_t previous_len = 0,
-           current_len = 0;
+    size_t current_len = 0;
 
     while(getline(&file_line, &current_len, file) != -1) {
         if (strcmp(file_line, "\n") == 0) {
