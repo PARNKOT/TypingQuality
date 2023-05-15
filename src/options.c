@@ -14,7 +14,7 @@ void parseOptions(int argc, char** argv) {
             if(argv[i][0] == '-') {
                 strcpy(option, argv[i]);
             } else {
-                readOption(option, argv[i]);
+                setOption(option, argv[i]);
             }
             
         }

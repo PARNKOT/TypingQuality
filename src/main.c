@@ -77,7 +77,6 @@ int main(int argc, char** argv) {
         fclose(file);
     } else {
         perror("Couldn't open file");
-        help();
     }
 
     return 0;
