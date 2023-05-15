@@ -52,6 +52,12 @@ void print_metrics(const Metrics *metrics) {
            metrics->time_interval_ms);
 }
 
+void help() {
+    printf("Help:\n \
+    \tUsage: program -f <file>\n \
+    \t-f, --file <file> - file to read lines from\n\n");
+}
+
 int main(int argc, char** argv) {
     #if __linux__
     printf("Posix OS\n\n");
@@ -61,11 +67,17 @@ int main(int argc, char** argv) {
 
     parseOptions(argc, argv);
     
+    if (!getOption("-f")) {
+        help();
+        exit(1);
+    }
+
     if (file = fopen(getOption("-f"), "r")) {
         mainLoop();
         fclose(file);
     } else {
         perror("Couldn't open file");
+        help();
     }
 
     return 0;
@@ -118,11 +130,16 @@ Metrics readUserStringAndCalcMetrics(char* str_to_repeat, const size_t length) {
 
     gettimeofday(&metrics.time_end, NULL);
 
+
     metrics.time_interval_s = (metrics.time_end.tv_sec - metrics.time_start.tv_sec);
     metrics.time_interval_ms = (((metrics.time_interval_s * 1000000) +
                                   metrics.time_end.tv_usec) - (metrics.time_start.tv_usec))/1000;
 
-    metrics.percent = compareStrings(str_to_repeat, user_line);
+    if (strcmp(user_line, "") == 0) {
+        metrics.percent = 0;    
+    } else {
+        metrics.percent = compareStrings(str_to_repeat, user_line);
+    }
 
     return metrics;
 }
