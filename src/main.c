@@ -74,7 +74,6 @@ int main(int argc, char** argv) {
 
 void mainLoop() {
     char *file_line = NULL;
-    char *user_line = NULL;
     
     int total_percent = 0;
     long total_time_ms = 0;

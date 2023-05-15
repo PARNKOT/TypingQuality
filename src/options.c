@@ -34,4 +34,6 @@ char* getOption(char option[]) {
             return options[i].value;
         }
     }
+
+    return NULL;
 }
