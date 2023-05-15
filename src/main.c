@@ -192,8 +192,8 @@ int compareWords(char *word1, char *word2) {
     
     while(*word1 != '\0' && *word2 != '\0') {
         *word1 == *word2 ? ++count_matches : 0;
-        *word1 != '\0' ? ++word1 : 0;
-        *word2 != '\0' ? ++word2 : 0;
+        ++word1;
+        ++word2;
     }
 
     return count_matches;
