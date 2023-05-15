@@ -1,0 +1,6 @@
+*.deb
+binary/
+binary/*
+package/
+package/*
+*.o

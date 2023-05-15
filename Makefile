@@ -5,17 +5,19 @@ CFLAGS = -I includes
 NAME = check_typing_quality
 SRC_PREFIX = src
 BINARY_DIR = binary
+TARGET_DIR = ~/.local/bin
 
 
 .PHONY: all clean install uninstall compile
 
 
-all:
-	$(GCC) $(SRC_PREFIX)/*.c -o $(NAME)
+#all:
+#	$(GCC) $(SRC_PREFIX)/*.c -o $(NAME)
 
 
 build: $(SRC)
 	$(GCC) $(LDFLAGS) $(OBJ) -o $(NAME)
+	rm -f *.o
 
 
 compile: $(SRC)
@@ -26,6 +28,12 @@ compile: $(SRC)
 %.c:
 	$(GCC) -c $(CFLAGS) $(SRC_PREFIX)/$@
 
+
+install:
+	install $(NAME) $(TARGET_DIR)
+
+uninstall:
+	rm -f $(TARGET_DIR)/$(NAME)
 
 clean:
 	rm -f *.o
