@@ -128,8 +128,7 @@ Metrics readUserStringAndCalcMetrics(char* str_to_repeat, const size_t length) {
     return metrics;
 }
 
-#if __linux__ || __unix || __unux__
-
+#if __linux__ || __unix || __unix__
 int compareStrings(char* base, char* s) {
     char *word1, *word2;
     char *last1, *last2;
